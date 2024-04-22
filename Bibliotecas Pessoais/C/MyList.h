@@ -23,6 +23,8 @@ void startList(){
 
     firstList = aux;
     lastList = aux;
+
+    aux = NULL;
 }
 
 // Função para criar uma celula nova
@@ -46,6 +48,8 @@ void addBegin(int valor){
 
     if ( firstList == lastList ) lastList = aux;
     else aux->prox->ant = aux;
+
+    aux = NULL;
 }
 
 // Adicionar celula no final
@@ -53,9 +57,10 @@ void addEnd(int valor){
     Celula *aux = newCelula(valor);
 
     lastList->prox = aux;
-    aux->prox = NULL;
     aux->ant = lastList;
     lastList = lastList->prox;
+
+    aux = NULL;
 }
 
 // Remover celula do final
@@ -81,7 +86,7 @@ int removeBegin(){
         return 0;
     }
 
-    int aux = firstList->valor;
+    int aux = firstList->prox->valor;
 
     firstList = firstList->prox;
     firstList->valor = 0;
