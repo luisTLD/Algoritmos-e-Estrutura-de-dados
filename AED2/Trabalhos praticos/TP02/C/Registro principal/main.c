@@ -61,7 +61,7 @@ typedef struct{
 void swap(Personagem *x, Personagem *y);
 
 // Busca
-Personagem linearIdSearch(const Personagem personagem[], char* id);
+int linearIdSearch(const Personagem personagem[], char* id);
 
 // Expecificas de Personagem
 void printPersonagem(const Personagem* personagem);
@@ -102,20 +102,19 @@ int main(){
                             // Funções para busca de personagem
 
 // Função para busca linear por ID
-Personagem linearIdSearch(const Personagem personagens[], char* id){
-    Personagem resp;
-    strcpy(resp.id, "-1");
+int linearIdSearch(const Personagem personagens[], char* id){
+    int index = -1;
 
     for ( int i = 0; i < structList; i++){
         if ( strcmp(personagens[i].id, id) == 0 ){
             countComp();
 
-            resp = personagens[i];
+            index = i;
             break;
         }
     }
 
-    return resp;
+    return index;
 }
 
 // -------------------------------------------------------------------------------------------------------------------------
